@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +46,7 @@ public class CustomErrorHandler {
      */
     @ExceptionHandler(InputUrlFormatException.class)
     @ResponseBody
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ApiError handleInputUrlFormatException(final InputUrlFormatException ex) {
         LOGGER.error("Handling InputUrlFormatException:  {}", ex.getMessage());
 
